@@ -9,7 +9,8 @@ Los problemas que buscamos resolver es la administración principalmente, que el
 Dar una confiabilidad al cliente con su usuario y contraseña para tener un uso exclusivo al cliente. (una atención transparente con el cliente)
 control rápido con el abastecimiento y poder visualizar los productos que se venden a mayor y menor medida.
 
-# Usuarios Objetivo: Identificar quiénes serán los principales usuarios del sistema (por ejemplo, empleados, clientes, administradores) y sus funcionalidades dentro del sistema.
+# Usuarios Objetivo: 
+Identificar quiénes serán los principales usuarios del sistema (por ejemplo, empleados, clientes, administradores) y sus funcionalidades dentro del sistema.
  Los usuarios objetivos podrían ser:
  1-Gerente, administrar empleados
  2-Cajero, administrar ventas
