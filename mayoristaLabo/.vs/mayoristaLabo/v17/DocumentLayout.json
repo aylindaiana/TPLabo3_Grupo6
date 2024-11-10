@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|c:\\users\\poky1975\\documents\\github\\tplabo3_grupo6\\mayoristalabo\\master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|c:\\users\\poky1975\\documents\\github\\tplabo3_grupo6\\mayoristalabo\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
@@ -103,8 +103,7 @@
               "RelativeToolTip": "Content\\style.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-04T23:09:53.321Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T23:09:53.321Z"
             },
             {
               "$type": "Document",
