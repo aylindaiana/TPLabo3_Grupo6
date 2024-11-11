@@ -1,73 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\",
+  "WorkspaceRootPath": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|c:\\users\\poky1975\\documents\\github\\tplabo3_grupo6\\mayoristalabo\\master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:content\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\master.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:master.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\navegacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:navegacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\inicio.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:inicio.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\ventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\ventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\empleados\\cajas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:empleados\\cajas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\empleados\\deposito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:empleados\\deposito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\empleados.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\empleados.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\clientes\\pago.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:clientes\\pago.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\clientes\\comprar.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:clientes\\comprar.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\ingreso.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\navegacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:navegacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\ingreso.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:ingreso.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\error.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:master.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\inicio.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:inicio.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\ventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\ventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\empleados.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\empleados.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\vistas\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:vistas\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\error.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:error.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\exito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\exito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:exito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
@@ -78,148 +54,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Master.Master",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master",
               "RelativeDocumentMoniker": "Master.Master",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master",
               "RelativeToolTip": "Master.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
               "WhenOpened": "2024-11-04T23:10:45.624Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Inicio.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx",
+              "RelativeDocumentMoniker": "Inicio.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx",
+              "RelativeToolTip": "Inicio.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-04T22:03:34.398Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "style.css",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Content\\style.css",
-              "RelativeDocumentMoniker": "Content\\style.css",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Content\\style.css",
-              "RelativeToolTip": "Content\\style.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-04T23:09:53.321Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Master.Master.cs",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master.cs",
-              "RelativeDocumentMoniker": "Master.Master.cs",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Master.Master.cs",
-              "RelativeToolTip": "Master.Master.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T22:57:33.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Navegacion.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Navegacion.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Navegacion.aspx",
               "RelativeDocumentMoniker": "Navegacion.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Navegacion.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Navegacion.aspx",
               "RelativeToolTip": "Navegacion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:48:10.061Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Cajas.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Cajas.aspx",
-              "RelativeDocumentMoniker": "Empleados\\Cajas.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Cajas.aspx",
-              "RelativeToolTip": "Empleados\\Cajas.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:05:32.078Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Deposito.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Deposito.aspx",
-              "RelativeDocumentMoniker": "Empleados\\Deposito.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Deposito.aspx",
-              "RelativeToolTip": "Empleados\\Deposito.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:05:23.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Pago.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Clientes\\Pago.aspx",
-              "RelativeDocumentMoniker": "Clientes\\Pago.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Clientes\\Pago.aspx",
-              "RelativeToolTip": "Clientes\\Pago.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:04:22.732Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Comprar.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Clientes\\Comprar.aspx",
-              "RelativeDocumentMoniker": "Clientes\\Comprar.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Clientes\\Comprar.aspx",
-              "RelativeToolTip": "Clientes\\Comprar.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:04:10.86Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Inicio.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx",
-              "RelativeDocumentMoniker": "Inicio.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx",
-              "RelativeToolTip": "Inicio.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:03:34.398Z"
+              "WhenOpened": "2024-11-04T22:48:10.061Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Registro.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Registro.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Registro.aspx",
               "RelativeDocumentMoniker": "Registro.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Registro.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Registro.aspx",
               "RelativeToolTip": "Registro.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:03:22.998Z"
+              "WhenOpened": "2024-11-04T22:03:22.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ingreso.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
+              "RelativeDocumentMoniker": "Ingreso.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
+              "RelativeToolTip": "Ingreso.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-04T22:03:14.303Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Inicio.aspx.designer.cs",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx.designer.cs",
               "RelativeDocumentMoniker": "Inicio.aspx.designer.cs",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Inicio.aspx.designer.cs",
               "RelativeToolTip": "Inicio.aspx.designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T22:43:54.221Z"
+              "WhenOpened": "2024-11-04T22:43:54.221Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "Clientes.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Clientes.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Clientes.aspx",
               "RelativeDocumentMoniker": "Vistas\\Clientes.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Clientes.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Clientes.aspx",
               "RelativeToolTip": "Vistas\\Clientes.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -227,23 +152,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Ingreso.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
-              "RelativeDocumentMoniker": "Ingreso.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
-              "RelativeToolTip": "Ingreso.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-04T22:03:14.303Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Empleados.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Empleados.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Empleados.aspx",
               "RelativeDocumentMoniker": "Vistas\\Empleados.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Empleados.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Empleados.aspx",
               "RelativeToolTip": "Vistas\\Empleados.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -253,9 +166,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Ventas.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Ventas.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Ventas.aspx",
               "RelativeDocumentMoniker": "Vistas\\Ventas.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Ventas.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Vistas\\Ventas.aspx",
               "RelativeToolTip": "Vistas\\Ventas.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -263,11 +176,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 9,
               "Title": "Error.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Error.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Error.aspx",
               "RelativeDocumentMoniker": "Error.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Error.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Error.aspx",
               "RelativeToolTip": "Error.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -275,11 +188,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 10,
               "Title": "Exito.aspx",
-              "DocumentMoniker": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
+              "DocumentMoniker": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
               "RelativeDocumentMoniker": "Exito.aspx",
-              "ToolTip": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
+              "ToolTip": "C:\\Users\\aapan\\Downloads\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
               "RelativeToolTip": "Exito.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",

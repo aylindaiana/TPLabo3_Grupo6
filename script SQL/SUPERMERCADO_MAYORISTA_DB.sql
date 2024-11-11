@@ -111,7 +111,7 @@ GO
 
 CREATE TABLE COMPRAS(
 	ID BIGINT IDENTITY(1,1),
-	IDCompra BIGINT IDENTITY(1000,1),
+	IDCompra BIGINT NOT NULL,
 	IDCaja BIGINT NOT NULL,--
 	IDCliente BIGINT NOT NULL,--
 	IDCajero BIGINT NOT NULL,--
@@ -143,7 +143,7 @@ GO
 
 CREATE TABLE PRODUCTOS(
 	ID BIGINT IDENTITY(1,1),
-	IDProducto BIGINT IDENTITY(1000,1),
+	IDProducto BIGINT NOT NULL,
 	Nombre VARCHAR(20) NOT NULL,
 	Stock BIGINT NOT NULL,
 	Precio MONEY NOT NULL,
@@ -186,5 +186,114 @@ CREATE TABLE PRODUCTO_X_CATEGORIA(
 )
 GO
 
+INSERT INTO PUESTOS (IDPuesto, NombrePuesto) VALUES 
+(1, 'Cajero'),
+(2, 'Repositor'),
+(3, 'Gerente'),
+(4, 'Manager');
 
+INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telefono) VALUES 
+(1, 'cajero@supermercado.com', 'pass123', 'Juan', 'Perez', 'Av. Siempre Viva 123', '123456789'),
+(2, 'repositor@supermercado.com', 'pass456', 'Maria', 'Gomez', 'Calle Falsa 456', '987654321'),
+(3, 'gerente@supermercado.com', 'pass789', 'Carlos', 'Lopez', 'Av. Central 789', '456789123'),
+(4, 'manager@supermercado.com', 'pass321', 'Lucia', 'Fernandez', 'Calle 8 1010', '654123987');
 
+INSERT INTO EMPLEADOS (IDEmpleado, FechaIngreso, FechaEgreso) VALUES 
+(1, '2023-01-10', NULL),
+(2, '2023-02-15', NULL),
+(3, '2022-08-01', NULL),
+(4, '2021-05-20', NULL);
+
+INSERT INTO EMPLEADOS_X_PUESTO (IDEmpleado, IDPuesto) VALUES 
+(1, 1), -- Juan Perez - cajero
+(2, 2), -- Maria Gomez - repositor
+(3, 3), -- Carlos Lopez - gerente
+(4, 4); -- Lucia Fernandez - manager
+
+INSERT INTO CAJAS (IDCaja, Estado) VALUES 
+(1, 1), -- abierto
+(2, 0); -- cerrado
+
+INSERT INTO CAJA_X_EMPLEADO (IDCaja, IDEmpleado, FichaEntrada, FichaSalida) VALUES 
+(1, 1, '2024-01-15 08:00:00', '2024-01-15 16:00:00'),
+(2, 1, '2024-01-16 08:00:00', NULL);
+
+INSERT INTO FICHAJE (IDEmpleado, FichaEntrada, FichaSalida) VALUES 
+(1, '2024-01-15 08:00:00', '2024-01-15 17:00:00'),
+(2, '2024-01-15 09:00:00', '2024-01-15 18:00:00'),
+(3, '2024-01-15 07:00:00', '2024-01-15 16:00:00'),
+(4, '2024-01-15 07:00:00', '2024-01-15 16:00:00');
+
+INSERT INTO TIPO_CLIENTE (IDTtipo, NombreTipoCliente) VALUES 
+(1, 'Mayorista'),
+(2, 'Minorista');
+
+INSERT INTO CLIENTES (IDCliente, IDTipoCliente) VALUES 
+(1, 1),
+(2, 2);
+
+INSERT INTO TIPO_PAGO (IDTipoPago, NombreTipoPago) VALUES 
+(1, 'Efectivo'),
+(2, 'Tarjeta de Crédito');
+
+INSERT INTO COMPRAS (IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista) VALUES 
+(1001, 1, 1, 1, 500.00, '2024-01-15 14:30:00', 1, 10, 50.00),
+(1002, 2, 2, 1, 150.00, '2024-01-15 15:00:00', 2, 5, 0.00);
+
+INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra) VALUES 
+(1, 1001),
+(2, 1002);
+
+INSERT INTO PRODUCTOS (IDProducto, Nombre, Stock, Precio, Descripcion, Estado) VALUES 
+(1001, 'Leche', 100, 50.00, 'Leche entera 1L', 1),
+(1002, 'Pan', 200, 30.00, 'Pan integral 500g', 1),
+(1003, 'Queso', 50, 80.00, 'Queso 250g', 1);
+
+INSERT INTO COMPRA_X_PRODUCTO (IDCompra, IDProducto, PrecioUnitarioHistorico) VALUES 
+(1001, 1001, 50.00),
+(1001, 1002, 30.00),
+(1002, 1003, 80.00);
+
+INSERT INTO CATEGORIAS (IDCategoria, NombreCategoria) VALUES 
+(1, 'Lácteos'),
+(2, 'Panadería'),
+(3, 'Frescos');
+
+INSERT INTO PRODUCTO_X_CATEGORIA (IDProducto, IDCategoria) VALUES 
+(1001, 1), -- Leche x Lácteo
+(1002, 2), -- Pan x Panadería
+(1003, 1); -- Queso x Lácteo
+GO
+
+CREATE PROCEDURE SP_OBTENER_PRODUCTOS_X_CATEGORIA(
+	@IDCategoria BIGINT
+	)
+AS
+BEGIN
+    SELECT p.IDProducto, p.Nombre, p.Stock, p.Precio, p.Descripcion
+    FROM PRODUCTOS p
+    INNER JOIN PRODUCTO_X_CATEGORIA pc ON p.IDProducto = pc.IDProducto
+    WHERE pc.IDCategoria = @IDCategoria;
+END 
+GO
+
+CREATE PROCEDURE SP_OBTENER_EMPLEADOS_Y_PUESTO
+AS
+BEGIN
+    SELECT e.IDEmpleado, u.Nombre, u.Apellido, p.NombrePuesto
+    FROM EMPLEADOS e
+    INNER JOIN USUARIOS u ON e.IDEmpleado = u.IDUsuario
+    INNER JOIN EMPLEADOS_X_PUESTO ep ON e.IDEmpleado = ep.IDEmpleado
+    INNER JOIN PUESTOS p ON ep.IDPuesto = p.IDPuesto;
+END
+GO
+--EXEC SP_OBTENER_EMPLEADOS_Y_PUESTO
+--DROP PROCEDURE SP_OBTENER_EMPLEADOS_Y_PUESTO
+
+CREATE PROCEDURE SP_Listar_Productos
+AS
+BEGIN
+    SELECT p.IDProducto, p.Nombre, p.Stock, p.Precio, p.Descripcion, p.Estado
+    FROM PRODUCTOS p;
+END
+GO

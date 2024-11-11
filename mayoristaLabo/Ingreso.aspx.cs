@@ -13,5 +13,9 @@ namespace mayoristaLabo
         {
 
         }
+        protected void btnValidate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
