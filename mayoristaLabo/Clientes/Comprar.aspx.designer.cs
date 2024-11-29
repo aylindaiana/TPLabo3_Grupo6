@@ -24,13 +24,22 @@ namespace mayoristaLabo.Clientes
         protected global::System.Web.UI.WebControls.GridView dgvListaDeProductosTotales;
 
         /// <summary>
-        /// Control dgvCarrito.
+        /// Control btnEfectivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvCarrito;
+        protected global::System.Web.UI.WebControls.Button btnEfectivo;
+
+        /// <summary>
+        /// Control btnTarjeta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTarjeta;
 
         /// <summary>
         /// Control btnComprar.
@@ -49,5 +58,32 @@ namespace mayoristaLabo.Clientes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+
+        /// <summary>
+        /// Control lblSubtotalTexto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotalTexto;
+
+        /// <summary>
+        /// Control lblSubtotalCalculado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSubtotalCalculado;
+
+        /// <summary>
+        /// Control dgvCarrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvCarrito;
     }
 }

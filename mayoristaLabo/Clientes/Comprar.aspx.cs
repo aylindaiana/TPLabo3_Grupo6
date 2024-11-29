@@ -1,13 +1,15 @@
-﻿using accesoDatos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing.Printing;
+using System.Web.Security;
+using accesoDatos;
 using Dominio;
 using Negocio;
-using System.Drawing.Printing;
+
 
 namespace mayoristaLabo.Clientes
 {
@@ -15,6 +17,9 @@ namespace mayoristaLabo.Clientes
     {
         List<Articulo> productosTotales;
         List<Articulo> productosEnCarrito;
+        bool efectivo;
+        bool tarjeta;
+        decimal subtotal;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +35,11 @@ namespace mayoristaLabo.Clientes
 
                     dgvListaDeProductosTotales.DataSource = productosTotales;
                     dgvListaDeProductosTotales.DataBind();
-
+                    subtotal = 0;
+                    lblSubtotalCalculado.Text = subtotal.ToString();
+                    efectivo = true;
+                    tarjeta = false;
+                    btnComprar.Enabled = false;
                 }
 
                 if (Session["carrito"] == null)
@@ -41,7 +50,18 @@ namespace mayoristaLabo.Clientes
                 {
                     Session["articulos"] = productosTotales;
                 }
-
+                if (Session["subtotal"] == null)
+                {
+                    Session["subtotal"] = subtotal;
+                }
+                if (Session["efectivo"] == null)
+                {
+                    Session["efectivo"] = efectivo;
+                }
+                if (Session["tarjeta"] == null)
+                {
+                    Session["tarjeta"] = tarjeta;
+                }
 
 
             }
@@ -55,13 +75,80 @@ namespace mayoristaLabo.Clientes
         {
             // se deja preparado el principio para comenzar con los envios disparadores a la bbdd.
             // faltan ajustes al trigger.
+            //
+            // en este insert del tipo instead of, se van a hacer todos los insert correspondientes en el carrito.
+            // para luego hacer un insert general en compras donde se sumaran todos los articulos que tengan idCompra en null.
+            //
+            // esto dara como resultado que si se quiere saber la cantida que se compro de un producto 
+            // en dicha compra, se tendra que hacer una view con la clausula group by,
+            // y que ademas haga un count en el apartado de cantidad para que sume la cantidad de ese producto en esa compra.
+            //
+            // por consecuente ya se tendrian todos los datos necesarios
+
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            CompraNegocio compNegocio = new CompraNegocio();
+            Compra compra = new Compra();
+            Usuario usuario = (Usuario)(Session["usuario"]);
+            try
+            {
+                productosEnCarrito = (List<Articulo>)Session["carrito"];
+                efectivo = (bool)Session["efectivo"];
+                tarjeta = (bool)Session["tarjeta"];
+
+                //-------SE CARGAN CADA UNO DE LOS ARTICULOS EN LA TABLA DE VENTAS
+                foreach (Articulo art in productosEnCarrito)
+                {
+                    artNegocio.CargarCompra_X_Articulo(art);
+                }
+
+                compra.IDCompra = 0; // indistinto ya que en el trigger se calcula.
+
+
+                //--------------// ESTE IF TIENE QUE QUEDAR COMENTADO HASTA QUE TENGAMOS ARMADO EL LOGIN //--------------
+                //if (ClienteNegocio.esCliente(usuario))
+                //{
+
+                compra.IDCaja = 0; //caja reservada para el autoservicio
+
+                compra.IDCliente = (object)usuario == null ? 5 : usuario.IDUsuario; // obviamente para estas pruebas va a ser null porque todavia no tenemos desarrollado un login.
+
+                compra.IDCajero = 0; //cajero reservada para el autoservicio
+
+                //}
+                //-------------------------------------------------------------------------------------------------------
+
+                compra.Monto = 0; // indistinto ya que en el trigger se calcula.
+                compra.FechaCompra = DateTime.Now;
+                if (efectivo)
+                    compra.IDTipoPago = 1;
+                if (tarjeta)
+                    compra.IDTipoPago = 2;
+
+                compra.Cantidad = 0;  // indistinto ya que en el trigger se calcula.
+                compra.DescuentoMayorista = 0; // indistinto ya que en el trigger se calcula.
+
+                compNegocio.CargarCompra(compra);// se carga la compra. 
+
+
+                Response.Redirect("/Exito.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
+            btnComprar.Enabled = false;
+
             productosEnCarrito = (List<Articulo>)Session["carrito"];
             productosTotales = (List<Articulo>)Session["articulos"];
 
+            subtotal = (decimal)Session["subtotal"];
+            subtotal = 0;
+            Session["subtotal"] = subtotal;
 
             List<Articulo> listaAux = productosTotales;
             foreach (Articulo carr in productosEnCarrito)
@@ -88,18 +175,23 @@ namespace mayoristaLabo.Clientes
 
             dgvCarrito.DataSource = productosEnCarrito;
             dgvCarrito.DataBind();
+
+            lblSubtotalCalculado.Text = subtotal.ToString();
         }
 
         protected void dgvListaDeProductosTotales_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                btnComprar.Enabled = true;
 
                 long idArticulo = (long)dgvListaDeProductosTotales.SelectedDataKey.Value;
                 ArticuloNegocio negocio = new ArticuloNegocio();
 
                 productosEnCarrito = (List<Articulo>)Session["carrito"];
                 productosTotales = (List<Articulo>)Session["articulos"];
+
+                subtotal = (decimal)Session["subtotal"];
                 int indice = productosTotales.FindIndex(x => x.IDProducto == idArticulo);
                 if (productosTotales[indice].Stock > 0)
                 {
@@ -107,8 +199,10 @@ namespace mayoristaLabo.Clientes
                     foreach (Articulo aux in negocio.ListarArticulos(idArticulo))
                     {
                         aux.Stock = 1;
+                        subtotal += aux.Precio;
                         productosEnCarrito.Add(aux);
-                    }
+                    };
+                    Session["subtotal"] = subtotal;
 
                     List<Articulo> auxLista = new List<Articulo>();
                     foreach (Articulo aux in productosTotales)
@@ -125,7 +219,6 @@ namespace mayoristaLabo.Clientes
                     }
                     productosTotales = auxLista;
 
-
                     Session["articulos"] = productosTotales;
                     Session["carrito"] = productosEnCarrito;
 
@@ -134,6 +227,8 @@ namespace mayoristaLabo.Clientes
 
                     dgvCarrito.DataSource = productosEnCarrito;
                     dgvCarrito.DataBind();
+
+                    lblSubtotalCalculado.Text = subtotal.ToString();
                 }
 
             }
@@ -153,15 +248,18 @@ namespace mayoristaLabo.Clientes
                 productosEnCarrito = (List<Articulo>)Session["carrito"];
                 productosTotales = (List<Articulo>)Session["articulos"];
 
+                subtotal = (decimal)Session["subtotal"];
 
                 foreach (Articulo aux in productosEnCarrito)
                 {
                     if (idArticulo == aux.IDProducto)
                     {
+                        subtotal -= aux.Precio;
                         productosEnCarrito.Remove(aux);
                         break;
                     }
                 }
+                Session["subtotal"] = subtotal;
 
                 List<Articulo> auxLista = new List<Articulo>();
                 foreach (Articulo aux in productosTotales)
@@ -178,6 +276,10 @@ namespace mayoristaLabo.Clientes
                 }
                 productosTotales = auxLista;
 
+                if (productosEnCarrito.Count == 0)
+                {
+                    btnComprar.Enabled = false;
+                }
 
                 Session["articulos"] = productosTotales;
                 Session["carrito"] = productosEnCarrito;
@@ -187,6 +289,8 @@ namespace mayoristaLabo.Clientes
 
                 dgvCarrito.DataSource = productosEnCarrito;
                 dgvCarrito.DataBind();
+
+                lblSubtotalCalculado.Text = subtotal.ToString();
             }
             catch (Exception ex)
             {
@@ -196,7 +300,28 @@ namespace mayoristaLabo.Clientes
 
         protected void dgvListaDeProductosTotales_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            // evento para manipular los colores de la grilla.
+            // evento para manipular la visual de la grilla dgv.
         }
+
+        protected void btnEfectivo_Click(object sender, EventArgs e)
+        {
+            btnEfectivo.CssClass = "btn btn-primary";
+            btnTarjeta.CssClass = "btn btn-outline-primary";
+            efectivo = true;
+            tarjeta = false;
+            Session["efectivo"] = efectivo;
+            Session["tarjeta"] = tarjeta;
+        }
+
+        protected void btnTarjeta_Click(object sender, EventArgs e)
+        {
+            btnTarjeta.CssClass = "btn btn-primary";
+            btnEfectivo.CssClass = "btn btn-outline-primary";
+            tarjeta = true;
+            efectivo = false;
+            Session["tarjeta"] = tarjeta;
+            Session["efectivo"] = efectivo;
+        }
+
     }
 }

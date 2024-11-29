@@ -158,10 +158,10 @@ GO
 
 CREATE TABLE COMPRA_X_PRODUCTO(
 	ID BIGINT IDENTITY(1,1),
-	IDCompra BIGINT NOT NULL,
+	IDCompra BIGINT NULL,
 	IDProducto BIGINT NOT NULL,
 	PrecioUnitarioHistorico MONEY NOT NULL,
-	CONSTRAINT PK_COMPRA_PRODUCTO PRIMARY KEY (IDCompra, IDProducto),
+	CONSTRAINT PK_COMPRA_PRODUCTO PRIMARY KEY (ID, IDProducto),
 	CONSTRAINT FK_ID_COMPRA FOREIGN KEY (IDCompra) REFERENCES COMPRAS(IDCompra),
 	CONSTRAINT FK_ID_PRODUCTO FOREIGN KEY (IDProducto) REFERENCES PRODUCTOS(IDProducto)
 )
@@ -193,16 +193,19 @@ INSERT INTO PUESTOS (IDPuesto, NombrePuesto) VALUES
 (4, 'Manager');
 
 INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telefono) VALUES 
-(1, 'cajero@supermercado.com', 'pass123', 'Juan', 'Perez', 'Av. Siempre Viva 123', '123456789'),
-(2, 'repositor@supermercado.com', 'pass456', 'Maria', 'Gomez', 'Calle Falsa 456', '987654321'),
-(3, 'gerente@supermercado.com', 'pass789', 'Carlos', 'Lopez', 'Av. Central 789', '456789123'),
-(4, 'manager@supermercado.com', 'pass321', 'Lucia', 'Fernandez', 'Calle 8 1010', '654123987');
+(0, 'automatico@super.com', 'pass000', ' ', ' ', ' ', ' '), -- usuario para el autoservicio
+(1, 'cajero@super.com', 'pass123', 'Juan', 'Perez', 'Av. Siempre Viva 123', '123456789'),
+(2, 'repositor@super.com', 'pass456', 'Maria', 'Gomez', 'Calle Falsa 456', '987654321'),
+(3, 'gerente@super.com', 'pass789', 'Carlos', 'Lopez', 'Av. Central 789', '456789123'),
+(4, 'manager@super.com', 'pass321', 'Lucia', 'Fernandez', 'Calle 8 1010', '654123987'),
+(5, 'cliente@super.com', 'pass111', 'Lucio', 'Hernandez', 'p`sherman wallabie', '11223344'); -- cuenta de un cliente.
 
 INSERT INTO EMPLEADOS (IDEmpleado, FechaIngreso, FechaEgreso) VALUES 
-(1, '2023-01-10', NULL),
-(2, '2023-02-15', NULL),
-(3, '2022-08-01', NULL),
-(4, '2021-05-20', NULL);
+(0, '01-01-1999', NULL), -- empleado para el autoservicio
+(1, '10-01-2023', NULL),
+(2, '15-02-2023', NULL),
+(3, '01-08-2022', NULL),
+(4, '20-05-2021', NULL);
 
 INSERT INTO EMPLEADOS_X_PUESTO (IDEmpleado, IDPuesto) VALUES 
 (1, 1), -- Juan Perez - cajero
@@ -211,18 +214,19 @@ INSERT INTO EMPLEADOS_X_PUESTO (IDEmpleado, IDPuesto) VALUES
 (4, 4); -- Lucia Fernandez - manager
 
 INSERT INTO CAJAS (IDCaja, Estado) VALUES 
+(0, 1), -- CAJA RESERVADA PARA EL AUTOSERVICIO.
 (1, 1), -- abierto
 (2, 0); -- cerrado
 
 INSERT INTO CAJA_X_EMPLEADO (IDCaja, IDEmpleado, FichaEntrada, FichaSalida) VALUES 
-(1, 1, '2024-01-15 08:00:00', '2024-01-15 16:00:00'),
-(2, 1, '2024-01-16 08:00:00', NULL);
+(1, 1, '15-01-2024 08:00:00', '15-01-2024 16:00:00'),
+(2, 1, '16-01-2024 08:00:00', NULL);
 
 INSERT INTO FICHAJE (IDEmpleado, FichaEntrada, FichaSalida) VALUES 
-(1, '2024-01-15 08:00:00', '2024-01-15 17:00:00'),
-(2, '2024-01-15 09:00:00', '2024-01-15 18:00:00'),
-(3, '2024-01-15 07:00:00', '2024-01-15 16:00:00'),
-(4, '2024-01-15 07:00:00', '2024-01-15 16:00:00');
+(1, '15-01-2024 08:00:00', '15-01-2024 17:00:00'),
+(2, '15-01-2024 09:00:00', '15-01-2024 18:00:00'),
+(3, '15-01-2024 07:00:00', '15-01-2024 16:00:00'),
+(4, '15-01-2024 07:00:00', '15-01-2024 16:00:00');
 
 INSERT INTO TIPO_CLIENTE (IDTtipo, NombreTipoCliente) VALUES 
 (1, 'Mayorista'),
@@ -230,6 +234,7 @@ INSERT INTO TIPO_CLIENTE (IDTtipo, NombreTipoCliente) VALUES
 
 INSERT INTO CLIENTES (IDCliente, IDTipoCliente) VALUES 
 (1, 1),
+(5, 1), -- cliente mayorista.
 (2, 2);
 
 INSERT INTO TIPO_PAGO (IDTipoPago, NombreTipoPago) VALUES 
@@ -237,8 +242,8 @@ INSERT INTO TIPO_PAGO (IDTipoPago, NombreTipoPago) VALUES
 (2, 'Tarjeta de Crédito');
 
 INSERT INTO COMPRAS (IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista) VALUES 
-(1001, 1, 1, 1, 500.00, '2024-01-15 14:30:00', 1, 10, 50.00),
-(1002, 2, 2, 1, 150.00, '2024-01-15 15:00:00', 2, 5, 0.00);
+(1001, 1, 1, 1, 500.00, '15-01-2024 14:30:00', 1, 10, 50.00),
+(1002, 2, 2, 1, 150.00, '15-01-2024 15:00:00', 2, 5, 0.00);
 
 INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra) VALUES 
 (1, 1001),
@@ -297,3 +302,149 @@ BEGIN
     FROM PRODUCTOS p;
 END
 GO
+
+
+	
+-- MODIFICACION DE LA ESTRUCTURA DE LA BBDD 
+/*
+	SE DEBE BASICAMENTE A QUE EN EL MOMENTO DE HACER EL INSERT NO SE CUENTA CON EL IDCOMPRA
+	YA QUE ESTE SE GENERARA POSTERIORMENTE, 
+	ENTONCES SE HABILITA PARA QUE LA MISMA RECIBA PARAMETROS NULL
+	LOS CUALES VAN A SER MODIFICADOS INMEDIATAMENTE AL TERMIAR EL TRIGGER
+	MEDIANTE UN UPDATE QUE SERA DISPARADO POR OTRO TRIGGER EN LA TABLA COMPRAS.
+*/
+ALTER TABLE [dbo].[COMPRAS_X_PRODUCTO]
+DROP CONSTRAINT PK_COMPRA_PRODUCTO
+
+ALTER TABLE [dbo].[COMPRAS_X_PRODUCTO]
+ALTER COLUMN IDCompra BIGINT NULL
+
+ALTER TABLE [dbo].[COMPRAS_X_PRODUCTO]
+ADD CONSTRAINT PK_COMPRA_PRODUCTO PRIMARY KEY (ID, IDProducto) 
+
+--//(////////////////////////////////////////////////////////////////////////(/////////////////////////////////////////////////////////////
+-- TRIGGER DE INSERCION EN LA TABLA EL DISPARADOR QUE INICIA TODO.
+
+CREATE OR ALTER TRIGGER TR_INSERCION_PRODUCTO_X_COMPRA ON COMPRA_X_PRODUCTO
+INSTEAD OF INSERT 
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+			
+			--// AUNQUE ESTE VALIDADO EN EL CODEBHIND Y EN EL LLAMADO A LA BBDD, 
+			--// NO ESTA DE MAS VALIDAR ACA TAMBIEN.
+			IF ((SELECT Estado FROM PRODUCTOS WHERE IDProducto = (SELECT IDProducto FROM inserted)) <> 1)BEGIN
+				IF @@TRANCOUNT > 0
+					ROLLBACK TRANSACTION
+				RAISERROR('EL PRODUCTO NO ESTA DISPONIBLE', 16, 10)
+			END
+
+			INSERT INTO COMPRA_X_PRODUCTO (IDCompra, IDProducto, PrecioUnitarioHistorico)
+			SELECT 
+				NULL, 
+				I.IDProducto, 
+				(SELECT Precio FROM PRODUCTOS WHERE IDProducto = I.IDProducto)  
+			FROM inserted AS I
+
+			UPDATE PRODUCTOS SET 
+				Stock = (Stock-1)
+			WHERE IDProducto = (SELECT IDProducto FROM inserted)
+
+			IF ((SELECT Stock FROM PRODUCTOS WHERE IDProducto = (SELECT IDProducto FROM inserted)) = 0) BEGIN 
+				UPDATE PRODUCTOS SET 
+					Estado = 0
+				WHERE IDProducto = (SELECT IDProducto FROM inserted)
+			END
+
+		COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		IF @@TRANCOUNT > 0
+			ROLLBACK TRANSACTION
+		RAISERROR('OCURRIO UN ERROR EN LA OPERACION INTENTELO NUEVAMENTE', 16, 10)
+	END CATCH
+END
+
+
+
+--//(////////////////////////////////////////////////////////////////////////(/////////////////////////////////////////////////////////////
+-- TRIGGER DE INSERCION EN LA TABLA COMPRAS EL DISPARADOR QUE LO FINALIZA TODO.
+
+
+CREATE OR ALTER TRIGGER TR_INSERTAR_COMPRA ON COMPRAS
+INSTEAD OF INSERT
+AS 
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+
+			-- VARIABLES QUE SE CALCULAN
+			DECLARE @ID_COMPRA BIGINT, @MONTO_TOTAL MONEY,  @FECHA_COMPRA DATETIME, @CANTIDAD BIGINT, @DESCUENTO_MAYORISTA MONEY
+			-- VARIABLES QUE VIENEN DE INSERTED
+			DECLARE @ID_CAJA BIGINT, @ID_CLIENTE BIGINT, @ID_CAJERO BIGINT, @ID_TIPO_PAGO BIGINT
+
+			
+			SET @ID_COMPRA = (SELECT ISNULL(MAX(IDCompra), 0) + 1 FROM COMPRAS)
+			SET @MONTO_TOTAL = (SELECT SUM(PrecioUnitarioHistorico) FROM COMPRA_X_PRODUCTO WHERE IDCompra IS NULL)
+			SET @CANTIDAD = (SELECT COUNT(ID) FROM COMPRA_X_PRODUCTO WHERE IDCompra IS NULL)
+			SET @FECHA_COMPRA = GETDATE()
+
+			SELECT @ID_CAJA = IDCaja, @ID_CLIENTE = IDCliente, @ID_CAJERO = IDCajero, @ID_TIPO_PAGO = IDTipoPago FROM inserted
+
+			IF(@CANTIDAD = 0) BEGIN
+				IF @@TRANCOUNT > 0
+					ROLLBACK TRANSACTION
+				RAISERROR('OCURRIO UN ERROR, LA CANTIDAD NO PUEDE SER CERO', 16, 10)
+			END
+
+			IF(@MONTO_TOTAL IS NULL) BEGIN
+				IF @@TRANCOUNT > 0
+					ROLLBACK TRANSACTION
+				RAISERROR('OCURRIO UN ERROR, EL MONTO NO PUEDE SER CERO', 16, 10)
+			END
+
+			IF @CANTIDAD > 15 AND (SELECT IDTipoCliente FROM CLIENTES WHERE IDCliente = @ID_CLIENTE) = 1 BEGIN 
+				SET @DESCUENTO_MAYORISTA = @MONTO_TOTAL * 0.15
+			END	
+			ELSE BEGIN
+				SET @DESCUENTO_MAYORISTA = 0
+			END
+
+			INSERT INTO COMPRAS (IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista)
+			VALUES 
+			(
+				@ID_COMPRA, --IDCOMPRA
+				@ID_CAJA, -- viene del codebehind
+				@ID_CLIENTE,  -- viene del codebehind 
+				@ID_CAJERO,  -- viene del codebehind
+				@MONTO_TOTAL, --MONTO TOTAL
+				@FECHA_COMPRA, --FECHA DE COMPRA
+				@ID_TIPO_PAGO, -- viene del codebehind
+				@CANTIDAD, --CANTIDAD 
+				@DESCUENTO_MAYORISTA
+			) 
+
+			UPDATE COMPRA_X_PRODUCTO SET
+				IDCompra = @ID_COMPRA
+			WHERE IDCompra IS NULL
+
+			INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra)
+			VALUES (@ID_CLIENTE, @ID_COMPRA)
+
+		COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		IF @@TRANCOUNT > 0
+			ROLLBACK TRANSACTION
+		RAISERROR('OCURRIO UN ERROR EN LA OPERACION INTENTELO NUEVAMENTE', 16, 10)
+	END CATCH
+END
+
+
+--// PARA VERIFICAR DESPUES DE HACER UNA COMPRA.
+SELECT * FROM COMPRAS
+SELECT * FROM COMPRA_X_PRODUCTO
+SELECT * FROM PRODUCTOS
+SELECT * FROM COMPRA_X_CLIENTE
+

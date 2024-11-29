@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Threading;
+using System.Data.Common;
 using Dominio;
 using accesoDatos;
 
@@ -18,12 +21,12 @@ namespace Negocio
             {
                 if (id == 0)
                 {
-                    datos.setearConsulta("SELECT IDProducto, Nombre, Stock, Precio, Descripcion, Estado FROM PRODUCTOS");
+                    datos.setearConsulta("SELECT IDProducto, Nombre, Stock, Precio, Descripcion, Estado FROM PRODUCTOS WHERE Estado = 1");
                     datos.ejecutarLectura();
                 }
                 else
                 {
-                    datos.setearConsulta("SELECT IDProducto, Nombre, Stock, Precio, Descripcion, Estado FROM PRODUCTOS WHERE IDProducto = " + id);
+                    datos.setearConsulta("SELECT IDProducto, Nombre, Stock, Precio, Descripcion, Estado FROM PRODUCTOS WHERE Estado = 1 AND IDProducto = " + id);
                     datos.ejecutarLectura();
                 }
 
@@ -52,6 +55,25 @@ namespace Negocio
             }
         }
 
+        public void CargarCompra_X_Articulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO COMPRA_X_PRODUCTO (IDProducto, PrecioUnitarioHistorico) VALUES (@ID_PRODUCTO, @PRECIO_HISTORICO)");
+                datos.setearParametro("@ID_PRODUCTO", (object)articulo.IDProducto ?? DBNull.Value);
+                datos.setearParametro("@PRECIO_HISTORICO", (object)articulo.Precio ?? DBNull.Value);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }

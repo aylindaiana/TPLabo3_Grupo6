@@ -22,11 +22,26 @@
                     <asp:CommandField HeaderText="Accion" ShowSelectButton="true" SelectText="Agregar al carrito" />
                 </Columns>
             </asp:GridView>
+
+            <asp:Label Text="Forma de pago" runat="server" />
+            <asp:Button Text="Efectivo" runat="server" ID="btnEfectivo" OnClick="btnEfectivo_Click" CssClass="btn btn-outline-primary"/>
+            <asp:Button Text="Tarjeta" runat="server" ID="btnTarjeta" OnClick="btnTarjeta_Click" CssClass="btn btn-outline-primary"/>
+            <br />
+            
+            <br />
+            <asp:Button Text="Comprar" runat="server" ID="btnComprar" OnClick="btnComprar_Click" CssClass="btn btn-success" />
+            <asp:Button Text="Cancelar" runat="server" ID="btnCancelar" OnClick="btnCancelar_Click" CssClass="btn btn-danger" />
         </div>
         <div class="col">
+            <br />
+            <asp:Label ID="lblSubtotalTexto" Text="SUBTOTAL: $" runat="server" />
+            <asp:Label ID="lblSubtotalCalculado" Text="" runat="server" />
+            <br />
+            <hr />
+
             <h5>Carrito de compras</h5>
             <asp:GridView ID="dgvCarrito" runat="server" CssClass="table table-active table-bordered"
-                AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged" DataKeyNames="IDProducto"> 
+                AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged" DataKeyNames="IDProducto">
                 <Columns>
                     <asp:BoundField HeaderText="IDProducto" DataField="IDProducto" Visible="false" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -38,8 +53,6 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:Button Text="Comprar" runat="server" ID="btnComprar" OnClick="btnComprar_Click" CssClass="btn btn-primary" />
-            <asp:Button Text="Cancelar" runat="server" ID="btnCancelar" OnClick="btnCancelar_Click" CssClass="btn btn-primary" />
         </div>
     </div>
 </asp:Content>
