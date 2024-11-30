@@ -50,7 +50,7 @@ namespace Negocio
 
                 foreach (Cliente aux in clientes)
                 {
-                    if (usuario.IDUsuario == aux.IDCliente)
+                    if (usuario.IdUsuario == aux.IDCliente)
                         return true;
                 }
                 return false;

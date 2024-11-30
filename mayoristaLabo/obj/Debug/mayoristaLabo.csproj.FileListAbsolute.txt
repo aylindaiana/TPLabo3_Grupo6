@@ -187,3 +187,9 @@ C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayori
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayorist.7071E74B.Up2Date
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.dll
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.pdb
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\accesoDatos.dll
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Dominio.dll
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Negocio.dll
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\accesoDatos.pdb
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Dominio.pdb
+C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Negocio.pdb

@@ -19,12 +19,13 @@ GO
 CREATE TABLE USUARIOS(
 	ID BIGINT IDENTITY(1,1),
 	IDUsuario BIGINT NOT NULL,
-	Email VARCHAR(20) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
 	Pass VARCHAR(20) NOT NULL,
 	Nombre VARCHAR(20) NOT NULL,
 	Apellido VARCHAR(20) NOT NULL,
 	Direccion VARCHAR(40) NULL,
 	Telefono VARCHAR(20) NULL,
+	Estado BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_ID_USUARIO PRIMARY KEY (IDUsuario),
 	CONSTRAINT UQ_UNICIDAD_USUARIOS UNIQUE (IDUsuario, Email)
 )
@@ -93,6 +94,7 @@ CREATE TABLE CLIENTES(
 	ID BIGINT IDENTITY(1,1),
 	IDCliente BIGINT NOT NULL,
 	IDTipoCliente BIGINT NOT NULL,
+	Estado BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_CLIENTE PRIMARY KEY (IDCliente),
 	CONSTRAINT UQ_UNICIDAD_CLIENTE UNIQUE (IDCliente, IDTipoCliente),
 	CONSTRAINT FK_TIPO_EMPLEADO FOREIGN KEY (IDTipoCliente) REFERENCES TIPO_CLIENTE(IDTtipo),
@@ -171,6 +173,7 @@ CREATE TABLE CATEGORIAS(
 	ID BIGINT IDENTITY(1,1),
 	IDCategoria BIGINT NOT NULL,
 	NombreCategoria VARCHAR(20) NOT NULL,
+	Estado BIT NOT NULL DEFAULT 1,
 	CONSTRAINT PK_CATEGORIA PRIMARY KEY (IDCategoria),
 	CONSTRAINT UQ_UNICIDAD_CATEGORIAS UNIQUE (IDCategoria, NombreCategoria)
 )
@@ -199,6 +202,7 @@ INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telef
 (3, 'gerente@super.com', 'pass789', 'Carlos', 'Lopez', 'Av. Central 789', '456789123'),
 (4, 'manager@super.com', 'pass321', 'Lucia', 'Fernandez', 'Calle 8 1010', '654123987'),
 (5, 'cliente@super.com', 'pass111', 'Lucio', 'Hernandez', 'p`sherman wallabie', '11223344'); -- cuenta de un cliente.
+GO
 
 INSERT INTO EMPLEADOS (IDEmpleado, FechaIngreso, FechaEgreso) VALUES 
 (0, '01-01-1999', NULL), -- empleado para el autoservicio
@@ -206,63 +210,76 @@ INSERT INTO EMPLEADOS (IDEmpleado, FechaIngreso, FechaEgreso) VALUES
 (2, '15-02-2023', NULL),
 (3, '01-08-2022', NULL),
 (4, '20-05-2021', NULL);
+GO
 
 INSERT INTO EMPLEADOS_X_PUESTO (IDEmpleado, IDPuesto) VALUES 
 (1, 1), -- Juan Perez - cajero
 (2, 2), -- Maria Gomez - repositor
 (3, 3), -- Carlos Lopez - gerente
 (4, 4); -- Lucia Fernandez - manager
+GO
 
 INSERT INTO CAJAS (IDCaja, Estado) VALUES 
 (0, 1), -- CAJA RESERVADA PARA EL AUTOSERVICIO.
 (1, 1), -- abierto
 (2, 0); -- cerrado
+GO
 
 INSERT INTO CAJA_X_EMPLEADO (IDCaja, IDEmpleado, FichaEntrada, FichaSalida) VALUES 
 (1, 1, '15-01-2024 08:00:00', '15-01-2024 16:00:00'),
 (2, 1, '16-01-2024 08:00:00', NULL);
+GO
 
 INSERT INTO FICHAJE (IDEmpleado, FichaEntrada, FichaSalida) VALUES 
 (1, '15-01-2024 08:00:00', '15-01-2024 17:00:00'),
 (2, '15-01-2024 09:00:00', '15-01-2024 18:00:00'),
 (3, '15-01-2024 07:00:00', '15-01-2024 16:00:00'),
 (4, '15-01-2024 07:00:00', '15-01-2024 16:00:00');
+GO
 
 INSERT INTO TIPO_CLIENTE (IDTtipo, NombreTipoCliente) VALUES 
 (1, 'Mayorista'),
 (2, 'Minorista');
+GO
 
 INSERT INTO CLIENTES (IDCliente, IDTipoCliente) VALUES 
 (1, 1),
 (5, 1), -- cliente mayorista.
 (2, 2);
+GO
 
 INSERT INTO TIPO_PAGO (IDTipoPago, NombreTipoPago) VALUES 
 (1, 'Efectivo'),
 (2, 'Tarjeta de Crédito');
+GO
 
 INSERT INTO COMPRAS (IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista) VALUES 
 (1001, 1, 1, 1, 500.00, '15-01-2024 14:30:00', 1, 10, 50.00),
 (1002, 2, 2, 1, 150.00, '15-01-2024 15:00:00', 2, 5, 0.00);
+GO
 
 INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra) VALUES 
 (1, 1001),
 (2, 1002);
+GO
 
 INSERT INTO PRODUCTOS (IDProducto, Nombre, Stock, Precio, Descripcion, Estado) VALUES 
 (1001, 'Leche', 100, 50.00, 'Leche entera 1L', 1),
 (1002, 'Pan', 200, 30.00, 'Pan integral 500g', 1),
 (1003, 'Queso', 50, 80.00, 'Queso 250g', 1);
+GO
 
 INSERT INTO COMPRA_X_PRODUCTO (IDCompra, IDProducto, PrecioUnitarioHistorico) VALUES 
 (1001, 1001, 50.00),
 (1001, 1002, 30.00),
 (1002, 1003, 80.00);
+GO
 
 INSERT INTO CATEGORIAS (IDCategoria, NombreCategoria) VALUES 
 (1, 'Lácteos'),
 (2, 'Panadería'),
 (3, 'Frescos');
+GO
 
 INSERT INTO PRODUCTO_X_CATEGORIA (IDProducto, IDCategoria) VALUES 
 (1001, 1), -- Leche x Lácteo
@@ -365,7 +382,7 @@ BEGIN
 		RAISERROR('OCURRIO UN ERROR EN LA OPERACION INTENTELO NUEVAMENTE', 16, 10)
 	END CATCH
 END
-
+GO
 
 
 --//(////////////////////////////////////////////////////////////////////////(/////////////////////////////////////////////////////////////
@@ -440,11 +457,135 @@ BEGIN
 		RAISERROR('OCURRIO UN ERROR EN LA OPERACION INTENTELO NUEVAMENTE', 16, 10)
 	END CATCH
 END
-
+GO
 
 --// PARA VERIFICAR DESPUES DE HACER UNA COMPRA.
-SELECT * FROM COMPRAS
-SELECT * FROM COMPRA_X_PRODUCTO
-SELECT * FROM PRODUCTOS
-SELECT * FROM COMPRA_X_CLIENTE
+--SELECT * FROM COMPRAS
+--SELECT * FROM COMPRA_X_PRODUCTO
+--SELECT * FROM PRODUCTOS
+--SELECT * FROM COMPRA_X_CLIENTE
 
+--------------- ACA EMPIEZAN VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------
+
+CREATE VIEW VW_VistaEmpleados AS
+SELECT 
+    u.IDUsuario,
+    u.Nombre AS NombreUsuario,
+    u.Apellido,
+    u.Email,
+    e.FechaIngreso,
+    e.FechaEgreso,
+    p.NombrePuesto AS Puesto
+FROM 
+    USUARIOS u
+INNER JOIN 
+    EMPLEADOS e ON u.IDUsuario = e.IDEmpleado
+LEFT JOIN 
+    EMPLEADOS_X_PUESTO ep ON e.IDEmpleado = ep.IDEmpleado
+LEFT JOIN 
+    PUESTOS p ON ep.IDPuesto = p.IDPuesto;
+GO
+
+CREATE VIEW VW_VistaUsuariosGeneral AS
+SELECT 
+    u.IDUsuario,
+    u.Nombre,
+    u.Apellido,
+    ISNULL(CONVERT(VARCHAR, e.FechaIngreso, 103), 'No es empleado') AS FechaIngreso,  
+    ISNULL(p.NombrePuesto, 'Sin puesto asignado') AS Puesto
+FROM 
+    USUARIOS u
+LEFT JOIN 
+    EMPLEADOS e ON u.IDUsuario = e.IDEmpleado
+LEFT JOIN 
+    EMPLEADOS_X_PUESTO ep ON e.IDEmpleado = ep.IDEmpleado
+LEFT JOIN 
+    PUESTOS p ON ep.IDPuesto = p.IDPuesto;
+GO
+
+SELECT * FROM USUARIOS
+USE SUPER_MERCADO_MAYORISTA_DB
+SELECT * FROM VW_VistaUsuariosGeneral
+
+---REVISAR Q NO TRAIGA CLIENTE O QUE NO APARECE EL NOMBRE
+CREATE VIEW VW_VistaCompras AS
+SELECT 
+    c.IDCompra,
+    cl.IDCliente,
+    uCliente.Nombre AS NombreCliente,
+    uCajero.Nombre AS NombreCajero,
+    c.FechaCompra,
+    c.Monto,
+    c.Cantidad,
+    c.DescuentoMayorista
+FROM 
+    COMPRAS c
+INNER JOIN 
+    CLIENTES cl ON c.IDCliente = cl.IDCliente
+INNER JOIN 
+    USUARIOS uCliente ON cl.IDCliente = uCliente.IDUsuario
+INNER JOIN 
+    EMPLEADOS ec ON c.IDCajero = ec.IDEmpleado
+INNER JOIN 
+    USUARIOS uCajero ON ec.IDEmpleado = uCajero.IDUsuario;
+GO
+
+CREATE PROCEDURE sp_AltaUsuario
+    @IDUsuario BIGINT,
+    @Email VARCHAR(100),
+    @Pass VARCHAR(20),
+    @Nombre VARCHAR(20),
+    @Apellido VARCHAR(20),
+    @Direccion VARCHAR(40) = NULL,
+    @Telefono VARCHAR(20) = NULL
+AS
+BEGIN
+    INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telefono, Estado)
+    VALUES (@IDUsuario, @Email, @Pass, @Nombre, @Apellido, @Direccion, @Telefono, 1); -- Estado 1: Activo
+END;
+GO
+
+CREATE PROCEDURE sp_ModificarUsuario
+    @IDUsuario BIGINT,
+    @Email VARCHAR(100),
+    @Pass VARCHAR(20),
+    @Nombre VARCHAR(20),
+    @Apellido VARCHAR(20),
+    @Direccion VARCHAR(40) = NULL,
+    @Telefono VARCHAR(20) = NULL,
+    @Estado BIT
+AS
+BEGIN
+    UPDATE USUARIOS
+    SET Email = @Email,
+        Pass = @Pass,
+        Nombre = @Nombre,
+        Apellido = @Apellido,
+        Direccion = @Direccion,
+        Telefono = @Telefono,
+        Estado = @Estado
+    WHERE IDUsuario = @IDUsuario;
+END;
+GO
+
+CREATE PROCEDURE sp_DarDeBajaUsuario
+    @IDUsuario BIGINT
+AS
+BEGIN
+    UPDATE USUARIOS
+    SET Estado = 0 -- Inactivo
+    WHERE IDUsuario = @IDUsuario AND Estado = 1; -- Solo baja usuarios activos
+END;
+GO
+
+CREATE PROCEDURE sp_ReactivarUsuario
+    @IDUsuario BIGINT
+AS
+BEGIN
+    UPDATE USUARIOS
+    SET Estado = 1 -- Activo
+    WHERE IDUsuario = @IDUsuario AND Estado = 0; -- Solo reactiva usuarios inactivos
+END;
+GO
+
+--------------- ACA TERMINA VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------

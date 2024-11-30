@@ -110,7 +110,7 @@ namespace mayoristaLabo.Clientes
 
                 compra.IDCaja = 0; //caja reservada para el autoservicio
 
-                compra.IDCliente = (object)usuario == null ? 5 : usuario.IDUsuario; // obviamente para estas pruebas va a ser null porque todavia no tenemos desarrollado un login.
+                compra.IDCliente = (object)usuario == null ? 5 : usuario.IdUsuario; // obviamente para estas pruebas va a ser null porque todavia no tenemos desarrollado un login.
 
                 compra.IDCajero = 0; //cajero reservada para el autoservicio
 

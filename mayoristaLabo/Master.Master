@@ -68,6 +68,14 @@
                 <asp:HyperLink ID="navegacionLink" runat="server" NavigateUrl="~/Navegacion.aspx" Text="Navegar" CssClass="nav-link" />
               </li>
             </ul>
+                  <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <asp:Label ID="lblUsuarioLogueado" runat="server" CssClass="nav-link" Text=""></asp:Label>
+        </li>
+        <li class="nav-item">
+            <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="nav-link" Text="Cerrar sesión" OnClick="btnCerrarSesion_Click"></asp:LinkButton>
+        </li>
+    </ul>
           </div>
                 </div>
         </nav>
