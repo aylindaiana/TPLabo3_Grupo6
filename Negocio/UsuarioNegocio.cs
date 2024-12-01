@@ -2,6 +2,7 @@
 using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,44 @@ namespace Negocio
             }
 
         }
+        public Usuario ObtenerClientePorID(long idCliente)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Usuario usuario = null;
+
+            try
+            {
+                datos.setearConsulta("SELECT * FROM USUARIOS WHERE IDUsuario = @IDCliente");
+                datos.setearParametro("@IDCliente", idCliente);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario = new Usuario
+                    {
+                        IdUsuario = (long)datos.Lector["IdUsuario"],
+                        nombre = datos.Lector["Nombre"].ToString(),
+                        apellido = datos.Lector["Apellido"].ToString(),
+                        email = datos.Lector["Email"].ToString(),
+                        contraseña = datos.Lector["Pass"].ToString(),
+                        direccion = datos.Lector["Direccion"].ToString(),
+                        telefono = datos.Lector["Telefono"].ToString()
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return usuario;
+        }
+
+
 
         public void ModificarUsuario(Usuario usuario)
         {
@@ -100,31 +139,6 @@ namespace Negocio
             catch (Exception ex)
             {
 
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-
-        public void CambiarEstadoUsuario(long idUsuario, bool activar)
-        {
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                if (activar)
-                    datos.setearConsulta("EXEC sp_ReactivarUsuario @IDUsuario");
-                else
-                    datos.setearConsulta("EXEC sp_DarDeBajaUsuario @IDUsuario");
-
-                datos.setearParametro("@IDUsuario", idUsuario);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
                 throw ex;
             }
             finally
@@ -208,23 +222,38 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public bool ObtenerEstadoUsuario(long idUsuario)
+
+        public List<Empleado> ObtenerEmpleadosConPuestos()
         {
+            List<Empleado> listaEmpleados = new List<Empleado>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("SELECT Estado FROM Usuarios WHERE IDUsuario = @IDUsuario");
-                datos.setearParametro("@IDUsuario", idUsuario);
+                datos.setearConsulta("SELECT * FROM VW_EMPLEADOS_PUESTOS");
                 datos.ejecutarLectura();
 
-                if (datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
-                    return (bool)datos.Lector["Estado"];
-                }
-                else
-                {
-                    return false;
+                    Empleado empleado = new Empleado
+                    {
+                        IdUsuario = (long)datos.Lector["ID"],
+                        nombre = datos.Lector["Nombre"].ToString(),
+                        apellido = datos.Lector["Apellido"].ToString(),
+                        FechaIngreso = datos.Lector["FechaIngreso"] != DBNull.Value
+                                       ? (DateTime?)datos.Lector["FechaIngreso"]
+                                       : null,
+                        FechaEgreso = datos.Lector["FechaEgreso"] != DBNull.Value
+                                      ? (DateTime?)datos.Lector["FechaEgreso"]
+                                      : null,
+                        Puesto = new Puesto
+                        {
+                            IdPuesto = (long)datos.Lector["IDPuesto"],
+                            NombrePuesto = datos.Lector["NombrePuesto"].ToString()
+                        }
+                    };
+
+                    listaEmpleados.Add(empleado);
                 }
             }
             catch (Exception ex)
@@ -235,7 +264,96 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+
+            return listaEmpleados;
         }
+        public List<Usuario> ObtenerClientesConTiposYEstados()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT * FROM VW_CLIENTES_TIPO_ESTADO");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario usuario = new Usuario();
+                    
+                        usuario.cliente.IDCliente = datos.Lector["IDCliente"] != DBNull.Value ? (long)datos.Lector["IDCliente"] : 0;
+
+                    usuario.nombre = datos.Lector["Nombre"].ToString();
+                    usuario.apellido = datos.Lector["Apellido"].ToString();
+                    usuario.email = datos.Lector["Email"].ToString();
+                    usuario.cliente.Estado = datos.Lector["Estado"].ToString() == "Activo";
+                    
+
+                    listaUsuarios.Add(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return listaUsuarios;
+        }
+        public bool ObtenerEstadoUsuario(long idCliente)
+        {
+            bool estado = false;
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT Estado FROM VW_CLIENTES_TIPO_ESTADO WHERE IDCliente = @IDCliente");
+                datos.setearParametro("@IDCliente", idCliente);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    estado = (bool)datos.Lector["Estado"];  
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return estado;
+        }
+
+        public void CambiarEstadoCliente(long idCliente, bool estado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("EXEC sp_DarDeBajaUsuario @IDCliente, @Estado");
+
+                datos.setearParametro("@IDCliente", idCliente);
+                datos.setearParametro("@Estado", estado ? 1 : 0);  
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
 
     }

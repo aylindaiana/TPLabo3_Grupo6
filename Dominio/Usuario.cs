@@ -20,5 +20,7 @@ namespace accesoDatos
 
         public Puesto puesto { get; set; }
 
+        public Cliente cliente { get; set; } = new Cliente();
+        public long IDCliente => cliente.IDCliente;
     }
 }

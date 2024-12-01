@@ -194,6 +194,7 @@ INSERT INTO PUESTOS (IDPuesto, NombrePuesto) VALUES
 (2, 'Repositor'),
 (3, 'Gerente'),
 (4, 'Manager');
+GO
 
 INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telefono) VALUES 
 (0, 'automatico@super.com', 'pass000', ' ', ' ', ' ', ' '), -- usuario para el autoservicio
@@ -205,11 +206,11 @@ INSERT INTO USUARIOS (IDUsuario, Email, Pass, Nombre, Apellido, Direccion, Telef
 GO
 
 INSERT INTO EMPLEADOS (IDEmpleado, FechaIngreso, FechaEgreso) VALUES 
-(0, '01-01-1999', NULL), -- empleado para el autoservicio
-(1, '10-01-2023', NULL),
-(2, '15-02-2023', NULL),
-(3, '01-08-2022', NULL),
-(4, '20-05-2021', NULL);
+(0, '1999-01-01', NULL), -- empleado para el autoservicio
+(1, '2023-01-10', NULL),
+(2, '2023-02-15', NULL),
+(3, '2022-08-01', NULL),
+(4, '2021-05-20', NULL);
 GO
 
 INSERT INTO EMPLEADOS_X_PUESTO (IDEmpleado, IDPuesto) VALUES 
@@ -226,15 +227,16 @@ INSERT INTO CAJAS (IDCaja, Estado) VALUES
 GO
 
 INSERT INTO CAJA_X_EMPLEADO (IDCaja, IDEmpleado, FichaEntrada, FichaSalida) VALUES 
-(1, 1, '15-01-2024 08:00:00', '15-01-2024 16:00:00'),
-(2, 1, '16-01-2024 08:00:00', NULL);
+(1, 1, '2024-01-15 08:00:00', '2024-01-15 16:00:00'),
+(2, 1, '2024-01-16 08:00:00', NULL);
 GO
 
-INSERT INTO FICHAJE (IDEmpleado, FichaEntrada, FichaSalida) VALUES 
-(1, '15-01-2024 08:00:00', '15-01-2024 17:00:00'),
-(2, '15-01-2024 09:00:00', '15-01-2024 18:00:00'),
-(3, '15-01-2024 07:00:00', '15-01-2024 16:00:00'),
-(4, '15-01-2024 07:00:00', '15-01-2024 16:00:00');
+INSERT INTO FICHAJE (IDEmpleado, FichaEntrada, FichaSalida) 
+VALUES 
+(1, '2024-01-15 08:00:00', '2024-01-15 17:00:00'),
+(2, '2024-01-15 09:00:00', '2024-01-15 18:00:00'),
+(3, '2024-01-15 07:00:00', '2024-01-15 16:00:00'),
+(4, '2024-01-15 07:00:00', '2024-01-15 16:00:00');
 GO
 
 INSERT INTO TIPO_CLIENTE (IDTtipo, NombreTipoCliente) VALUES 
@@ -254,8 +256,8 @@ INSERT INTO TIPO_PAGO (IDTipoPago, NombreTipoPago) VALUES
 GO
 
 INSERT INTO COMPRAS (IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista) VALUES 
-(1001, 1, 1, 1, 500.00, '15-01-2024 14:30:00', 1, 10, 50.00),
-(1002, 2, 2, 1, 150.00, '15-01-2024 15:00:00', 2, 5, 0.00);
+(1001, 1, 1, 1, 500.00, '2024-01-15 14:30:00', 1, 10, 50.00),
+(1002, 2, 2, 1, 150.00, '2024-01-15 15:00:00', 2, 5, 0.00);
 GO
 
 INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra) VALUES 
@@ -467,25 +469,6 @@ GO
 
 --------------- ACA EMPIEZAN VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------
 
-CREATE VIEW VW_VistaEmpleados AS
-SELECT 
-    u.IDUsuario,
-    u.Nombre AS NombreUsuario,
-    u.Apellido,
-    u.Email,
-    e.FechaIngreso,
-    e.FechaEgreso,
-    p.NombrePuesto AS Puesto
-FROM 
-    USUARIOS u
-INNER JOIN 
-    EMPLEADOS e ON u.IDUsuario = e.IDEmpleado
-LEFT JOIN 
-    EMPLEADOS_X_PUESTO ep ON e.IDEmpleado = ep.IDEmpleado
-LEFT JOIN 
-    PUESTOS p ON ep.IDPuesto = p.IDPuesto;
-GO
-
 CREATE VIEW VW_VistaUsuariosGeneral AS
 SELECT 
     u.IDUsuario,
@@ -503,9 +486,6 @@ LEFT JOIN
     PUESTOS p ON ep.IDPuesto = p.IDPuesto;
 GO
 
-SELECT * FROM USUARIOS
-USE SUPER_MERCADO_MAYORISTA_DB
-SELECT * FROM VW_VistaUsuariosGeneral
 
 ---REVISAR Q NO TRAIGA CLIENTE O QUE NO APARECE EL NOMBRE
 CREATE VIEW VW_VistaCompras AS
@@ -568,24 +548,87 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE sp_DarDeBajaUsuario
-    @IDUsuario BIGINT
+CREATE PROCEDURE sp_DarDeBajaUsuario(
+    @IDCliente BIGINT,
+    @Estado BIT
+	)
 AS
 BEGIN
-    UPDATE USUARIOS
-    SET Estado = 0 -- Inactivo
-    WHERE IDUsuario = @IDUsuario AND Estado = 1; -- Solo baja usuarios activos
+    IF EXISTS (SELECT 1 FROM USUARIOS WHERE IDUsuario = @IDCliente)
+    BEGIN
+        UPDATE USUARIOS
+        SET Estado = @Estado
+        WHERE IDUsuario = @IDCliente;
+    END
+    ELSE
+    BEGIN
+        ROLLBACK;
+    END
 END;
 GO
+
+CREATE TRIGGER trg_UpdateEstadoCliente
+ON USUARIOS
+AFTER UPDATE
+AS
+BEGIN
+    IF UPDATE(Estado)
+    BEGIN
+        UPDATE CLIENTES
+        SET Estado = (SELECT Estado FROM INSERTED WHERE IDUsuario = CLIENTES.IDCliente)
+        WHERE IDCliente IN (SELECT IDUsuario FROM INSERTED);
+    END
+END;
+GO
+--PARA PROBAR
+--select * from CLIENTES
+--exec sp_DarDeBajaUsuario 2, 0
+--SELECT * FROM USUARIOS WHERE IDUsuario = 2;
 
 CREATE PROCEDURE sp_ReactivarUsuario
     @IDUsuario BIGINT
 AS
 BEGIN
     UPDATE USUARIOS
-    SET Estado = 1 -- Activo
-    WHERE IDUsuario = @IDUsuario AND Estado = 0; -- Solo reactiva usuarios inactivos
+    SET Estado = 1 
+    WHERE IDUsuario = @IDUsuario AND Estado = 0; 
 END;
 GO
+
+CREATE VIEW VW_EMPLEADOS_PUESTOS AS
+SELECT 
+    e.IDEmpleado,
+    u.Nombre,
+    u.Apellido,
+    p.NombrePuesto,
+    CASE 
+        WHEN f.FichaSalida IS NULL THEN 'Activo'
+        ELSE 'Inactivo'
+    END AS EstadoEmpleado
+FROM EMPLEADOS e
+INNER JOIN USUARIOS u ON e.IDEmpleado = u.IDUsuario
+INNER JOIN EMPLEADOS_X_PUESTO ep ON e.IDEmpleado = ep.IDEmpleado
+INNER JOIN PUESTOS p ON ep.IDPuesto = p.IDPuesto
+LEFT JOIN FICHAJE f ON e.IDEmpleado = f.IDEmpleado
+WHERE f.FichaEntrada = (SELECT MAX(FichaEntrada) FROM FICHAJE WHERE IDEmpleado = e.IDEmpleado);
+GO
+
+CREATE VIEW VW_CLIENTES_TIPO_ESTADO AS
+SELECT 
+    cli.IDCliente,
+    u.Nombre,
+    u.Apellido,
+    u.Email,
+	u.Telefono,
+	 cli.IDTipoCliente,
+    tc.NombreTipoCliente,
+    cli.Estado AS Estado
+FROM CLIENTES cli
+INNER JOIN USUARIOS u ON cli.IDCliente = u.IDUsuario
+INNER JOIN TIPO_CLIENTE tc ON cli.IDTipoCliente = tc.IDTtipo;
+GO
+
+--SELECT * FROM VW_CLIENTES_TIPO_ESTADO
+--SELECT IDCliente, Nombre, Apellido, Email, NombreTipoCliente, EstadoCliente FROM VW_CLIENTES_TIPO_ESTADO;
 
 --------------- ACA TERMINA VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------

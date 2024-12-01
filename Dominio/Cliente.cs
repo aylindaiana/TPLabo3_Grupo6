@@ -11,5 +11,6 @@ namespace Dominio
         public long ID { get; set; }
         public long IDCliente { get; set; }
         public long IDTipoCliente { get; set; }
+        public bool Estado { get; set; }
     }
 }
