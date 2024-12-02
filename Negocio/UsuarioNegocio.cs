@@ -237,7 +237,7 @@ namespace Negocio
                 {
                     Empleado empleado = new Empleado
                     {
-                        IdUsuario = (long)datos.Lector["ID"],
+                        IdUsuario = (long)datos.Lector["IDEmpleado"],
                         nombre = datos.Lector["Nombre"].ToString(),
                         apellido = datos.Lector["Apellido"].ToString(),
                         FechaIngreso = datos.Lector["FechaIngreso"] != DBNull.Value
@@ -286,6 +286,7 @@ namespace Negocio
                     usuario.nombre = datos.Lector["Nombre"].ToString();
                     usuario.apellido = datos.Lector["Apellido"].ToString();
                     usuario.email = datos.Lector["Email"].ToString();
+                    usuario.telefono = datos.Lector["Telefono"].ToString();
                     usuario.cliente.Estado = datos.Lector["Estado"].ToString() == "Activo";
                     
 

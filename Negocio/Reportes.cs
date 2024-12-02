@@ -46,7 +46,8 @@ namespace Negocio
                         CompraXProductoExpandida aux = new CompraXProductoExpandida();
 
                         aux.IDCompra = (object)datos.Lector["ID Compra"] == null ? 0 : (long)datos.Lector["ID Compra"];
-                        aux.NombreProducto = (object)datos.Lector["Producto"] == null ? "" : (string)datos.Lector["Producto"]; 
+                        aux.NombreProducto = (object)datos.Lector["Producto"] == null ? "" : (string)datos.Lector["Producto"];
+                        aux.Categoria = (object)datos.Lector["Categoria"] == null ? "" : (string)datos.Lector["Categoria"];
                         aux.PrecioUnitario = (object)datos.Lector["Precio Unitario"] == null ? 0 : (decimal)datos.Lector["Precio Unitario"]; 
                         aux.Cantidad = (object)datos.Lector["Cantidad"] == null ? "" : (string)datos.Lector["Cantidad"];
 
