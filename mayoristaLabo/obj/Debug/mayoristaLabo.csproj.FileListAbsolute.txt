@@ -126,6 +126,8 @@ C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Negocio.dll
 C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\accesoDatos.pdb
 C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Dominio.pdb
 C:\Users\aapan\Downloads\TPLabo3_Grupo6\mayoristaLabo\bin\Negocio.pdb
+C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.csproj.AssemblyReference.cache
+C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.csproj.CoreCompileInputs.cache
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\mayoristaLabo.dll.config
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\mayoristaLabo.dll
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\mayoristaLabo.pdb
@@ -188,8 +190,6 @@ C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\accesoDatos.
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\Dominio.pdb
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\Negocio.pdb
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.csproj.AssemblyReference.cache
-C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.csproj.CoreCompileInputs.cache
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayorist.7071E74B.Up2Date
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.dll
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\mayoristaLabo\obj\Debug\mayoristaLabo.pdb

@@ -725,3 +725,11 @@ END
 SELECT dbo.FN_ULTIMO_IDCOMPRA_CARGADO() AS IDCompra
 
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_COMPRAS
+AS
+BEGIN 
+	SELECT IDCompra, IDCaja, IDCliente, IDCajero, Monto, FechaCompra, IDTipoPago, Cantidad, DescuentoMayorista FROM COMPRAS
+END
+
+EXEC SP_LISTAR_COMPRAS

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Negocio
@@ -55,6 +56,40 @@ namespace Negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public static List<Compra> ListarCompras()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Compra> listaComprasGeneral = new List<Compra>();
+            try
+            {
+                datos.setearConsulta("EXEC SP_LISTAR_COMPRAS");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Compra aux = new Compra();
+
+                    aux.IDCompra = (object)datos.Lector["IDCompra"] == null ? 0 : (long)datos.Lector["IDCompra"];
+                    aux.IDCaja = (object)datos.Lector["IDCaja"] == null ? 0 : (long)datos.Lector["IDCaja"];
+                    aux.IDCliente = (object)datos.Lector["IDCliente"] == null ? 0 : (long)datos.Lector["IDCliente"];
+                    aux.IDCajero = (object)datos.Lector["IDCajero"] == null ? 0 : (long)datos.Lector["IDCajero"];
+                    aux.Monto = (object)datos.Lector["Monto"] == null ? 0 : (decimal)datos.Lector["Monto"];
+                    aux.FechaCompra = (object)datos.Lector["FechaCompra"] == null ? DateTime.Now : (DateTime)datos.Lector["FechaCompra"];
+                    aux.IDTipoPago = (object)datos.Lector["IDTipoPago"] == null ? 0 : (long)datos.Lector["IDTipoPago"];
+                    aux.Cantidad = (object)datos.Lector["Cantidad"] == null ? 0 : (long)datos.Lector["Cantidad"];
+                    aux.DescuentoMayorista = (object)datos.Lector["DescuentoMayorista"] == null ? 0 : (decimal)datos.Lector["DescuentoMayorista"];
+
+                    listaComprasGeneral.Add(aux);
+                }
+
+                return listaComprasGeneral;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
