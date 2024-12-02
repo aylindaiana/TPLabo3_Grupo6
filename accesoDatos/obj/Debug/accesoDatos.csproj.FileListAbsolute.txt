@@ -16,3 +16,9 @@ C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDa
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.csproj.CoreCompileInputs.cache
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.dll
 C:\Users\poky1975\Documents\GitHub\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.pdb
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\bin\Debug\accesoDatos.dll
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\bin\Debug\accesoDatos.pdb
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.dll
+C:\Users\Usuario\Desktop\UTN\PROG 3\tp-cuatrimestral-equipo-4c\TPLabo3_Grupo6\accesoDatos\obj\Debug\accesoDatos.pdb

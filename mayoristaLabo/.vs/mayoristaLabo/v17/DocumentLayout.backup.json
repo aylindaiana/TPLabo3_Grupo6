@@ -1,12 +1,117 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\poky1975\\Documents\\GitHub\\TPLabo3_Grupo6\\mayoristaLabo\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|c:\\users\\usuario\\desktop\\utn\\prog 3\\tp-cuatrimestral-equipo-4c\\tplabo3_grupo6\\mayoristalabo\\ingreso.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:ingreso.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|c:\\users\\usuario\\desktop\\utn\\prog 3\\tp-cuatrimestral-equipo-4c\\tplabo3_grupo6\\mayoristalabo\\empleados\\deposito.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:empleados\\deposito.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\empleados\\depositoproducto.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:empleados\\depositoproducto.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{702D511D-DCC8-4AB3-8CFF-B189AD5F74F2}|..\\Dominio\\Dominio.csproj|c:\\users\\usuario\\desktop\\utn\\prog 3\\tp-cuatrimestral-equipo-4c\\tplabo3_grupo6\\dominio\\articulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\exito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:exito.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25FF95F3-6FB2-475C-9ACF-BC8F46E0D40F}|mayoristaLabo.csproj|solutionrelative:global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Ingreso.aspx",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
+              "RelativeDocumentMoniker": "Ingreso.aspx",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Ingreso.aspx",
+              "RelativeToolTip": "Ingreso.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-02T18:55:45.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Deposito.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Deposito.aspx.cs",
+              "RelativeDocumentMoniker": "Empleados\\Deposito.aspx.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\Deposito.aspx.cs",
+              "RelativeToolTip": "Empleados\\Deposito.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAtwBUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:12:13.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DepositoProducto.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\DepositoProducto.aspx.cs",
+              "RelativeDocumentMoniker": "Empleados\\DepositoProducto.aspx.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Empleados\\DepositoProducto.aspx.cs",
+              "RelativeToolTip": "Empleados\\DepositoProducto.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:12:09.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Articulo.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\Dominio\\Articulo.cs",
+              "RelativeDocumentMoniker": "..\\Dominio\\Articulo.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\Dominio\\Articulo.cs",
+              "RelativeToolTip": "..\\Dominio\\Articulo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:09:45.28Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Exito.aspx",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
+              "RelativeDocumentMoniker": "Exito.aspx",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Exito.aspx",
+              "RelativeToolTip": "Exito.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-02T18:04:28.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Global.asax.cs",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\UTN\\PROG 3\\tp-cuatrimestral-equipo-4c\\TPLabo3_Grupo6\\mayoristaLabo\\Global.asax.cs",
+              "RelativeToolTip": "Global.asax.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T18:04:15.346Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

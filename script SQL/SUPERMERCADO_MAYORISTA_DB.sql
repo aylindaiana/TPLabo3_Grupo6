@@ -147,6 +147,7 @@ CREATE TABLE PRODUCTOS(
 	ID BIGINT IDENTITY(1,1),
 	IDProducto BIGINT NOT NULL,
 	Nombre VARCHAR(20) NOT NULL,
+	UrlImagen NVARCHAR(255) NULL,
 	Stock BIGINT NOT NULL,
 	Precio MONEY NOT NULL,
 	Descripcion VARCHAR(300) NOT NULL,
@@ -265,11 +266,11 @@ INSERT INTO COMPRA_X_CLIENTE (IDCliente, IDCompra) VALUES
 (2, 1002);
 GO
 
-INSERT INTO PRODUCTOS (IDProducto, Nombre, Stock, Precio, Descripcion, Estado) VALUES 
-(1001, 'Leche', 100, 50.00, 'Leche entera 1L', 1),
-(1002, 'Pan', 200, 30.00, 'Pan integral 500g', 1),
-(1003, 'Queso', 50, 80.00, 'Queso 250g', 1);
-GO
+INSERT INTO PRODUCTOS (IDProducto, Nombre, UrlImagen, Stock, Precio, Descripcion, Estado) VALUES 
+(1001, 'Leche', 'https://dcdn.mitiendanube.com/stores/001/248/555/products/leche-entera_l1-6519e449f0b9a1dfcd16846122950227-1024-1024.png', 100, 50.00, 'Leche entera 1L', 1),
+(1002, 'Pan', 'https://superfreshmarket.com.ve/wp-content/uploads/2020/08/pan-campesino-1.jpg', 200, 30.00, 'Pan integral 500g', 1),
+(1003, 'Queso', 'https://jumboargentina.vtexassets.com/arquivos/ids/824340-800-600?v=638513086056530000&width=800&height=600&aspect=true', 50, 80.00, 'Queso 250g', 1);
+
 
 INSERT INTO COMPRA_X_PRODUCTO (IDCompra, IDProducto, PrecioUnitarioHistorico) VALUES 
 (1001, 1001, 50.00),
@@ -322,8 +323,6 @@ BEGIN
 END
 GO
 
-
-	
 -- MODIFICACION DE LA ESTRUCTURA DE LA BBDD 
 /*
 	SE DEBE BASICAMENTE A QUE EN EL MOMENTO DE HACER EL INSERT NO SE CUENTA CON EL IDCOMPRA
@@ -628,6 +627,7 @@ INNER JOIN USUARIOS u ON cli.IDCliente = u.IDUsuario
 INNER JOIN TIPO_CLIENTE tc ON cli.IDTipoCliente = tc.IDTtipo;
 GO
 
+
 --SELECT * FROM VW_CLIENTES_TIPO_ESTADO
 --SELECT IDCliente, Nombre, Apellido, Email, NombreTipoCliente, EstadoCliente FROM VW_CLIENTES_TIPO_ESTADO;
 
@@ -725,3 +725,108 @@ END
 SELECT dbo.FN_ULTIMO_IDCOMPRA_CARGADO() AS IDCompra
 
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+=======
+-- Trigger agregar producto
+
+-- Trigger agregar empleado
+
+-- Triger agregar cliente
+
+-- Exec Registrarse
+
+-- Exec Login
+
+SELECT * FROM PUESTOS;
+SELECT * FROM USUARIOS;
+SELECT * FROM EMPLEADOS;
+SELECT * FROM EMPLEADOS_X_PUESTO;
+SELECT * FROM CAJAS;
+SELECT * FROM CAJA_X_EMPLEADO;
+SELECT * FROM FICHAJE;
+SELECT * FROM TIPO_CLIENTE;
+SELECT * FROM CLIENTES;
+SELECT * FROM TIPO_PAGO;
+SELECT * FROM COMPRAS;
+SELECT * FROM COMPRA_X_CLIENTE;
+SELECT * FROM PRODUCTOS;
+SELECT * FROM COMPRA_X_PRODUCTO;
+SELECT * FROM PRODUCTO_X_CATEGORIA;
+SELECT * FROM CATEGORIAS;
+
+-- Traer producto por su id
+CREATE OR ALTER PROCEDURE SP_BUSCAR_PRODUCTO_ID (
+	@ID BIGINT
+)
+AS
+BEGIN
+	SELECT P.ID, P.IDProducto, Nombre, UrlImagen, Stock, Precio, Descripcion, C.NombreCategoria, P.Estado 
+	FROM PRODUCTOS P 
+	INNER JOIN PRODUCTO_X_CATEGORIA PC 
+	ON P.IDProducto = PC.IDProducto 
+	INNER JOIN CATEGORIAS C
+	ON PC.IDCategoria = C.IDCategoria
+	WHERE P.IDProducto = @ID
+END
+
+EXEC SP_BUSCAR_PRODUCTO_ID 1003;
+
+-- Traer todos los productos
+CREATE OR ALTER PROCEDURE SP_LISTAR_PRODUCTOS
+AS
+BEGIN
+	SELECT P.ID, P.IDProducto, Nombre, UrlImagen, Stock, Precio, Descripcion, C.NombreCategoria, P.Estado 
+	FROM PRODUCTOS P 
+	INNER JOIN PRODUCTO_X_CATEGORIA PC 
+	ON P.IDProducto = PC.IDProducto 
+	INNER JOIN CATEGORIAS C
+	ON PC.IDCategoria = C.IDCategoria
+END
+
+EXEC SP_LISTAR_PRODUCTOS
+
+-- Agregar Stock
+CREATE OR ALTER PROCEDURE SP_AGREGAR_STOCK 
+(
+	@ID BIGINT
+)
+AS
+BEGIN
+	UPDATE PRODUCTOS SET Stock += 1 WHERE IDProducto = @ID;
+END
+
+EXEC SP_AGREGAR_STOCK 1001;
+SELECT * FROM PRODUCTOS
+
+-- Restar Stock
+CREATE OR ALTER PROCEDURE SP_RESTAR_STOCK 
+(
+	@ID BIGINT
+)
+AS
+BEGIN
+	UPDATE PRODUCTOS SET Stock -= 1 WHERE IDProducto = @ID;
+END
+
+-- categorias
+SELECT * FROM CATEGORIAS;
+
+-- TRAER PRODUCTOS POR CATEGORIA
+
+CREATE OR ALTER PROCEDURE SP_TRAER_PRODUCTOS_CATEGORIA ( @IDCategoria bigint)
+AS BEGIN
+	BEGIN TRY
+		SELECT P.ID, P.IDProducto, Nombre, UrlImagen, Stock, Precio, Descripcion, C.NombreCategoria, P.Estado 
+		FROM PRODUCTOS P 
+		INNER JOIN PRODUCTO_X_CATEGORIA PC 
+		ON P.IDProducto = PC.IDProducto 
+		INNER JOIN CATEGORIAS C
+		ON PC.IDCategoria = C.IDCategoria
+		WHERE PC.IDCategoria = @IDCategoria
+		ORDER BY Stock DESC;
+	END TRY
+	BEGIN CATCH
+		PRINT 'ERROR'
+	END CATCH
+END
+
+EXEC SP_TRAER_PRODUCTOS_CATEGORIA 1;
