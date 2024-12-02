@@ -632,3 +632,96 @@ GO
 --SELECT IDCliente, Nombre, Apellido, Email, NombreTipoCliente, EstadoCliente FROM VW_CLIENTES_TIPO_ESTADO;
 
 --------------- ACA TERMINA VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------
+
+
+
+SELECT * FROM COMPRAS
+SELECT * FROM COMPRA_X_PRODUCTO
+SELECT * FROM PRODUCTOS
+SELECT * FROM COMPRA_X_CLIENTE
+
+--// VIEW PARA MOSTRAR TODOS LOS DETALLES DE UNA COMPRA.
+
+CREATE OR ALTER VIEW VW_COMPRA_EXPANDIDA
+AS 
+SELECT
+C.IDCompra AS 'Codigo Compra', 
+C.IDCaja AS 'Caja',
+C.IDCajero AS 'Numero Cajero',
+U1.Nombre + ' ' + U1.Apellido AS 'Nombre cajero',
+CL.IDCliente AS 'Identificador Cliente',
+U2.Nombre + ' ' + U2.Apellido AS 'Nombre Cliente',
+TC.NombreTipoCliente AS 'Tipo de Cliente',
+C.FechaCompra AS 'Fecha de Compra',
+TP.NombreTipoPago AS 'Tipo de pago',
+C.Cantidad AS 'Total de productos',
+'$' + cast(C.Monto as varchar(20)) as 'Importe Bruto',
+'$' + cast(C.DescuentoMayorista as varchar(20)) as 'Descuento Mayorista',
+'$' + cast((C.Monto - C.DescuentoMayorista) as varchar(20)) as 'Importe neto total'
+FROM COMPRAS AS C
+INNER JOIN 
+	CLIENTES AS CL 
+	ON CL.IDCliente = C.IDCliente
+INNER JOIN 
+	USUARIOS AS U1 
+	ON U1.IDUsuario = C.IDCajero
+INNER JOIN 
+	USUARIOS AS U2 
+	ON U2.IDUsuario = C.IDCliente
+INNER JOIN 
+	TIPO_CLIENTE AS TC 
+	ON TC.IDTtipo = CL.IDTipoCliente
+INNER JOIN 
+	TIPO_PAGO AS TP 
+	ON TP.IDTipoPago = C.IDTipoPago
+GO
+
+--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE OR ALTER VIEW VW_PRODUCTOS_X_COMPRA_EXPANDIDA
+AS
+SELECT
+CXP.IDCompra AS 'ID Compra',
+P.Nombre AS 'Producto',
+CXP.PrecioUnitarioHistorico AS 'Precio Unitario',
+CAST(COUNT(CXP.IDProducto) AS varchar(20)) + 'u' AS 'Cantidad'
+FROM COMPRA_X_PRODUCTO AS CXP
+INNER JOIN 
+	PRODUCTOS AS P 
+	ON P.IDProducto = CXP.IDProducto
+GROUP BY 
+	CXP.IDCompra, 
+	CXP.PrecioUnitarioHistorico, 
+	P.Nombre
+GO
+
+--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE OR ALTER PROCEDURE SP_REPORTE_COMPRA_DETALLADA
+(
+	@ID_COMPRA BIGINT
+)
+AS
+BEGIN
+	SELECT * FROM VW_COMPRA_EXPANDIDA AS VWC WHERE VWC.[Codigo Compra] = @ID_COMPRA
+	SELECT * FROM VW_PRODUCTOS_X_COMPRA_EXPANDIDA AS VWP WHERE VWP.[ID Compra] = @ID_COMPRA
+END
+
+--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CREATE FUNCTION FN_ULTIMO_IDCOMPRA_CARGADO()
+RETURNS BIGINT
+AS
+BEGIN
+	DECLARE @ID_COMPRA_ULTIMO BIGINT
+
+	SELECT TOP (1) @ID_COMPRA_ULTIMO = IDCompra 
+	FROM COMPRAS 
+	ORDER BY IDCompra DESC
+
+	RETURN @ID_COMPRA_ULTIMO
+END
+
+SELECT dbo.FN_ULTIMO_IDCOMPRA_CARGADO() AS IDCompra
+
+--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

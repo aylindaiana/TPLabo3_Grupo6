@@ -130,7 +130,7 @@ namespace mayoristaLabo.Clientes
                 compNegocio.CargarCompra(compra);// se carga la compra. 
 
 
-                Response.Redirect("/Exito.aspx", false);
+                Response.Redirect("Pago.aspx", false);
             }
             catch (Exception ex)
             {

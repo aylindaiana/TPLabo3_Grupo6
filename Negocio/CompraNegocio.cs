@@ -39,5 +39,23 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public int UltimoIDCompraCargado()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT dbo.FN_ULTIMO_IDCOMPRA_CARGADO() AS IDCompra");
+                return datos.ejecutarAccionScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
