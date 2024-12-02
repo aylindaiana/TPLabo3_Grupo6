@@ -32,7 +32,7 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:Button Text="Regresar" runat="server" ID="btnRegresar" OnClick="btnRegresar_Click" CssClass="btn btn-primary"/>
+            <asp:Button Text="Regresar" runat="server" ID="btnRegresar" OnClick="btnRegresar_Click" CssClass="btn btn-primary" />
 
         </div>
 
@@ -43,6 +43,7 @@
                 <Columns>
                     <asp:BoundField HeaderText="ID Compra" DataField="IDCompra" Visible="false" />
                     <asp:BoundField HeaderText="Producto" DataField="NombreProducto" Visible="true" />
+                    <asp:BoundField HeaderText="Categoria" DataField="Categoria" Visible="false" />
                     <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioUnitario" Visible="true" />
                     <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" Visible="true" />
                 </Columns>

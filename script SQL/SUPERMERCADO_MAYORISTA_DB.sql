@@ -469,7 +469,7 @@ GO
 
 --------------- ACA EMPIEZAN VISTAS Y PROCEDIMIENTOS PARA USUARIOS ------------------------
 
-CREATE VIEW VW_VistaUsuariosGeneral AS
+CREATE OR ALTER VIEW VW_VistaUsuariosGeneral AS
 SELECT 
     u.IDUsuario,
     u.Nombre,
@@ -488,7 +488,7 @@ GO
 
 
 ---REVISAR Q NO TRAIGA CLIENTE O QUE NO APARECE EL NOMBRE
-CREATE VIEW VW_VistaCompras AS
+CREATE OR ALTER VIEW VW_VistaCompras AS
 SELECT 
     c.IDCompra,
     cl.IDCliente,
@@ -510,7 +510,7 @@ INNER JOIN
     USUARIOS uCajero ON ec.IDEmpleado = uCajero.IDUsuario;
 GO
 
-CREATE PROCEDURE sp_AltaUsuario
+CREATE OR ALTER PROCEDURE sp_AltaUsuario
     @IDUsuario BIGINT,
     @Email VARCHAR(100),
     @Pass VARCHAR(20),
@@ -525,7 +525,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE sp_ModificarUsuario
+CREATE OR ALTER PROCEDURE sp_ModificarUsuario
     @IDUsuario BIGINT,
     @Email VARCHAR(100),
     @Pass VARCHAR(20),
@@ -548,7 +548,7 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE sp_DarDeBajaUsuario(
+CREATE OR ALTER PROCEDURE sp_DarDeBajaUsuario(
     @IDCliente BIGINT,
     @Estado BIT
 	)
@@ -567,7 +567,7 @@ BEGIN
 END;
 GO
 
-CREATE TRIGGER trg_UpdateEstadoCliente
+CREATE OR ALTER TRIGGER trg_UpdateEstadoCliente
 ON USUARIOS
 AFTER UPDATE
 AS
@@ -585,7 +585,7 @@ GO
 --exec sp_DarDeBajaUsuario 2, 0
 --SELECT * FROM USUARIOS WHERE IDUsuario = 2;
 
-CREATE PROCEDURE sp_ReactivarUsuario
+CREATE OR ALTER PROCEDURE sp_ReactivarUsuario
     @IDUsuario BIGINT
 AS
 BEGIN
@@ -595,12 +595,15 @@ BEGIN
 END;
 GO
 
-CREATE VIEW VW_EMPLEADOS_PUESTOS AS
+CREATE OR ALTER VIEW VW_EMPLEADOS_PUESTOS AS
 SELECT 
-    e.IDEmpleado,
+    e.IDEmpleado AS 'IDEmpleado',
     u.Nombre,
     u.Apellido,
+	p.IDPuesto,
     p.NombrePuesto,
+	e.FechaIngreso,
+	e.FechaEgreso,
     CASE 
         WHEN f.FichaSalida IS NULL THEN 'Activo'
         ELSE 'Inactivo'
@@ -613,16 +616,16 @@ LEFT JOIN FICHAJE f ON e.IDEmpleado = f.IDEmpleado
 WHERE f.FichaEntrada = (SELECT MAX(FichaEntrada) FROM FICHAJE WHERE IDEmpleado = e.IDEmpleado);
 GO
 
-CREATE VIEW VW_CLIENTES_TIPO_ESTADO AS
+CREATE OR ALTER VIEW VW_CLIENTES_TIPO_ESTADO AS
 SELECT 
     cli.IDCliente,
-    u.Nombre,
-    u.Apellido,
-    u.Email,
+    u.Nombre AS 'Nombre',
+    u.Apellido AS 'Apellido', 
+    u.Email AS 'Email',
 	u.Telefono,
 	 cli.IDTipoCliente,
     tc.NombreTipoCliente,
-    cli.Estado AS Estado
+    cli.Estado AS 'Estado'
 FROM CLIENTES cli
 INNER JOIN USUARIOS u ON cli.IDCliente = u.IDUsuario
 INNER JOIN TIPO_CLIENTE tc ON cli.IDTipoCliente = tc.IDTtipo;
@@ -683,16 +686,24 @@ AS
 SELECT
 CXP.IDCompra AS 'ID Compra',
 P.Nombre AS 'Producto',
+C.NombreCategoria AS 'Categoria',
 CXP.PrecioUnitarioHistorico AS 'Precio Unitario',
 CAST(COUNT(CXP.IDProducto) AS varchar(20)) + 'u' AS 'Cantidad'
 FROM COMPRA_X_PRODUCTO AS CXP
 INNER JOIN 
 	PRODUCTOS AS P 
 	ON P.IDProducto = CXP.IDProducto
+INNER JOIN 
+	PRODUCTO_X_CATEGORIA AS PXC 
+	ON PXC.IDProducto = P.IDProducto
+INNER JOIN 
+	CATEGORIAS AS C 
+	ON C.IDCategoria = PXC.IDCategoria
 GROUP BY 
 	CXP.IDCompra, 
 	CXP.PrecioUnitarioHistorico, 
-	P.Nombre
+	P.Nombre,
+	C.NombreCategoria
 GO
 
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -709,7 +720,7 @@ END
 
 --///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-CREATE FUNCTION FN_ULTIMO_IDCOMPRA_CARGADO()
+CREATE OR ALTER FUNCTION FN_ULTIMO_IDCOMPRA_CARGADO()
 RETURNS BIGINT
 AS
 BEGIN
@@ -733,3 +744,14 @@ BEGIN
 END
 
 EXEC SP_LISTAR_COMPRAS
+
+select * 
+from CLIENTES as c
+
+--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SELECT	
+	ID,
+	IDEmpleado,
+
+FROM EMPLEADOS

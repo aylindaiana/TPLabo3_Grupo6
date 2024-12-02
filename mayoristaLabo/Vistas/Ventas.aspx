@@ -21,8 +21,9 @@
             dgvProductosCompra.DataSource = CXP_E;
             dgvProductosCompra.DataBind();
     %>
+            <hr />
             <div class="row">
-                <div class="col">
+                <div class="col-6">
                     <h5>Datos de la compra</h5>
                     <asp:GridView ID="dgvDatos" runat="server" CssClass="table table-dark table-bordered table table-striped"
                         AutoGenerateColumns="false">
@@ -43,13 +44,14 @@
                         </Columns>
                     </asp:GridView>
                 </div>
-                <div class="col">
+                <div class="col-8">
                     <h5>Listado de productos</h5>
                     <asp:GridView ID="dgvProductosCompra" runat="server" CssClass="table table-dark table-bordered table table-striped"
                         AutoGenerateColumns="false">
                         <Columns>
-                            <asp:BoundField HeaderText="ID Compra" DataField="IDCompra" Visible="false" />
+                            <asp:BoundField HeaderText="ID Compra" DataField="IDCompra" Visible="true" />
                             <asp:BoundField HeaderText="Producto" DataField="NombreProducto" Visible="true" />
+                            <asp:BoundField HeaderText="Categoria" DataField="Categoria" Visible="true" />
                             <asp:BoundField HeaderText="Precio Unitario" DataField="PrecioUnitario" Visible="true" />
                             <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" Visible="true" />
                         </Columns>
